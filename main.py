@@ -564,4 +564,5 @@ async def username(interaction: discord.Interaction, username:str):
 
 
 bot.run("TOKEN")
+print("Bot is running")
   
