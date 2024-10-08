@@ -7,10 +7,10 @@ import fetch from 'node-fetch';
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 // Your bot token
-const token = 'Token';
+const token = 'token';
 
 // Command prefix
-const prefix = '!prova';
+const prefix = '!dungeons';
 
 // Event listener for when the bot is ready
 client.once('ready', () => {
@@ -37,7 +37,7 @@ client.on('messageCreate', async message => {
             // Fetch data from the SkyCrypt API
             // Refresh API Cache for the user
             await fetch(`https://sky.shiiyu.moe/stats/${username}`);
-            const response = await fetch(`https://sky.shiiyu.moe/api/v2/dungeons/${username}`);
+            const response = await fetch(`https://sky.shiiyu.moe/api/v2/profile/${username}`);
             const rawText = await response.text();
 
 
@@ -53,14 +53,12 @@ client.on('messageCreate', async message => {
             Object.values(profiles).forEach(profile => {
 
                 try {
-                    if (profile.selected) {
+                    if (profile.current) {
                         selected_profile = profile;
-
                     }
                 }
                 catch (error) {
                     console.error('Error parsing profile data:', error);
-                    return;
                 }
             });
 
@@ -80,11 +78,30 @@ client.on('messageCreate', async message => {
                 .setTimestamp();
 
 
+            // Fetch info from the JSON data
+            // Dungeons data
+            const secrets = selected_profile.data.dungeons.secrets_found;
+            const level = selected_profile.data.dungeons.catacombs.level.level;
+            const selectedClass = selected_profile.data.dungeons.classes.selected_class;
+            // Accessories data
+            const MagicPower = selected_profile.data.accessories.magical_power.total;
+            // Slayers data
+            const Revenant = selected_profile.data.slayer.slayers.zombie.level.currentLevel;
+            const Enderman = selected_profile.data.slayer.slayers.enderman.level.currentLevel;
+            const Tarantula = selected_profile.data.slayer.slayers.spider.level.currentLevel;
+            const Sven = selected_profile.data.slayer.slayers.wolf.level.currentLevel;
+            const blaze = selected_profile.data.slayer.slayers.blaze.level.currentLevel;
 
-            const secrets = selected_profile.dungeons.secrets_found;
-            const level = selected_profile.dungeons.catacombs.level.level;
+            embed.addFields({ name: 'Catacombs Level', value: level.toString(), inline: false },)
             embed.addFields({ name: 'Total secrets Found', value: secrets.toString(), inline: false },)
-            embed.addFields({ name: 'Level', value: level.toString(), inline: false });
+            embed.addFields({ name: 'Class', value: selectedClass.toString(), inline: false });
+            embed.addFields({ name: 'Magic Power', value: MagicPower.toString(), inline: false });
+            embed.addFields({ name: 'Revenant', value: Revenant.toString(), inline: false });
+            embed.addFields({ name: 'Enderman', value: Enderman.toString(), inline: false });
+            embed.addFields({ name: 'Tarantula', value: Tarantula.toString(), inline: false });
+            embed.addFields({ name: 'Sven', value: Sven.toString(), inline: false });
+            embed.addFields({ name: 'Blaze', value: blaze.toString(), inline: false });
+
             message.channel.send({ embeds: [embed] });
 
 
