@@ -1,0 +1,307 @@
+{
+    "22cf3968-05bd-40b4-b749-c82ecd25a453": {
+        "profile_id": "22cf3968-05bd-40b4-b749-c82ecd25a453",
+        "cute_name": "Zucchini",
+        "selected": false,
+        "data": {
+            "slayers": {
+                "wolf": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 10,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Sven Packmaster",
+                    "head": "/head/f83a2aa9d3734b919ac24c9659e5e0f86ecafbf64d4788cfa433bbec189e8"
+                },
+                "blaze": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 10,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Inferno Demonlord",
+                    "head": "/head/b20657e24b56e1b2f8fc219da1de788c0c24f36388b1a409d0cd2d8dba44aa3b"
+                },
+                "enderman": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 10,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Voidgloom Seraph",
+                    "head": "/head/1b09a3752510e914b0bdc9096b392bb359f7a8e8a9566a02e7f66faff8d6f89e"
+                },
+                "spider": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 5,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Tarantula Broodfather",
+                    "head": "/head/9d7e3b19ac4f3dee9c5677c135333b9d35a7f568b63d1ef4ada4b068b5a25"
+                },
+                "zombie": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 5,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Revenant Horror",
+                    "head": "/head/1fc0184473fe882d2895ce7cbc8197bd40ff70bf10d3745de97b6c2a9c5fc78f"
+                }
+            },
+            "total_slayer_xp": 0,
+            "total_coins_spent": 0
+        }
+    },
+    "44368c06-64b0-4a4b-84fc-9e1499fced33": {
+        "profile_id": "44368c06-64b0-4a4b-84fc-9e1499fced33",
+        "cute_name": "Papaya",
+        "selected": false,
+        "data": {
+            "slayers": {
+                "wolf": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 10,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Sven Packmaster",
+                    "head": "/head/f83a2aa9d3734b919ac24c9659e5e0f86ecafbf64d4788cfa433bbec189e8"
+                },
+                "blaze": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 10,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Inferno Demonlord",
+                    "head": "/head/b20657e24b56e1b2f8fc219da1de788c0c24f36388b1a409d0cd2d8dba44aa3b"
+                },
+                "enderman": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 10,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Voidgloom Seraph",
+                    "head": "/head/1b09a3752510e914b0bdc9096b392bb359f7a8e8a9566a02e7f66faff8d6f89e"
+                },
+                "spider": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 5,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Tarantula Broodfather",
+                    "head": "/head/9d7e3b19ac4f3dee9c5677c135333b9d35a7f568b63d1ef4ada4b068b5a25"
+                },
+                "zombie": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 5,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Revenant Horror",
+                    "head": "/head/1fc0184473fe882d2895ce7cbc8197bd40ff70bf10d3745de97b6c2a9c5fc78f"
+                }
+            },
+            "total_slayer_xp": 0,
+            "total_coins_spent": 0
+        }
+    },
+    "62d8ea38-b422-4345-ba20-52b5d4731976": {
+        "profile_id": "62d8ea38-b422-4345-ba20-52b5d4731976",
+        "cute_name": "Pineapple",
+        "selected": true,
+        "data": {
+            "slayers": {
+                "enderman": {
+                    "level": {
+                        "currentLevel": 3,
+                        "xp": 5130,
+                        "maxLevel": 9,
+                        "progress": 3.42,
+                        "xpForNext": 1500,
+                        "unclaimed": true
+                    },
+                    "coins_spent": 529500,
+                    "kills": {
+                        "1": 1,
+                        "2": 1,
+                        "3": 1,
+                        "4": 10,
+                        "total": 13
+                    },
+                    "name": "Voidgloom Seraph",
+                    "head": "/head/1b09a3752510e914b0bdc9096b392bb359f7a8e8a9566a02e7f66faff8d6f89e"
+                },
+                "zombie": {
+                    "level": {
+                        "currentLevel": 6,
+                        "xp": 21230,
+                        "maxLevel": 9,
+                        "progress": 0.2123,
+                        "xpForNext": 100000,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 2199500,
+                    "kills": {
+                        "1": 1,
+                        "2": 1,
+                        "3": 7,
+                        "4": 41,
+                        "total": 50
+                    },
+                    "name": "Revenant Horror",
+                    "head": "/head/1fc0184473fe882d2895ce7cbc8197bd40ff70bf10d3745de97b6c2a9c5fc78f"
+                },
+                "spider": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 20130,
+                        "maxLevel": 9,
+                        "progress": 4026,
+                        "xpForNext": 5,
+                        "unclaimed": true
+                    },
+                    "coins_spent": 2029500,
+                    "kills": {
+                        "1": 1,
+                        "2": 1,
+                        "3": 1,
+                        "4": 40,
+                        "total": 43
+                    },
+                    "name": "Tarantula Broodfather",
+                    "head": "/head/9d7e3b19ac4f3dee9c5677c135333b9d35a7f568b63d1ef4ada4b068b5a25"
+                },
+                "wolf": {
+                    "level": {
+                        "currentLevel": 3,
+                        "xp": 630,
+                        "maxLevel": 9,
+                        "progress": 0.42,
+                        "xpForNext": 1500,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 79500,
+                    "kills": {
+                        "1": 1,
+                        "2": 1,
+                        "3": 1,
+                        "4": 1,
+                        "total": 4
+                    },
+                    "name": "Sven Packmaster",
+                    "head": "/head/f83a2aa9d3734b919ac24c9659e5e0f86ecafbf64d4788cfa433bbec189e8"
+                },
+                "vampire": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 5,
+                        "progress": 0,
+                        "xpForNext": 20,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Riftstalker Bloodfiend",
+                    "head": "/head/5aa29ea961757dc3c90bfabf302c5abe9d308fb4a7d3864e5788ad2cc9160aa2"
+                },
+                "blaze": {
+                    "level": {
+                        "currentLevel": 0,
+                        "xp": 0,
+                        "maxLevel": 9,
+                        "progress": 0,
+                        "xpForNext": 10,
+                        "unclaimed": false
+                    },
+                    "coins_spent": 0,
+                    "kills": {
+                        "total": 0
+                    },
+                    "name": "Inferno Demonlord",
+                    "head": "/head/b20657e24b56e1b2f8fc219da1de788c0c24f36388b1a409d0cd2d8dba44aa3b"
+                }
+            },
+            "total_slayer_xp": 47120,
+            "total_coins_spent": 4838000
+        }
+    }
+}
