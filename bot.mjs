@@ -1,6 +1,6 @@
 // bot.mjs
 
-import { Client, GatewayIntentBits, EmbedBuilder } from 'discord.js';
+import { Client, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import fetch from 'node-fetch';
 
 // Initialize the Discord client
@@ -71,26 +71,40 @@ client.on('messageCreate', async message => {
             }
 
 
+
+            const provaButton = new ButtonBuilder()
+                .setCustomId('prova')
+                .setLabel('Prova')
+                .setStyle(ButtonStyle.Primary);
+
+
+            const row = new ActionRowBuilder()
+                .addComponents(provaButton);
+
+
+
+
             const embed = new EmbedBuilder()
                 .setTitle(`Dungeons Information for ${username}`)
                 .setColor(0x00AE86)
 
                 .setTimestamp();
 
-
+            const user_data = selected_profile.data
+            const slayer_data = selected_profile.data.slayer.slayers
             // Fetch info from the JSON data
             // Dungeons data
-            const secrets = selected_profile.data.dungeons.secrets_found;
-            const level = selected_profile.data.dungeons.catacombs.level.level;
-            const selectedClass = selected_profile.data.dungeons.classes.selected_class;
+            const secrets = user_data.dungeons.secrets_found;
+            const level = user_data.dungeons.catacombs.level.level;
+            const selectedClass = user_data.dungeons.classes.selected_class;
             // Accessories data
-            const MagicPower = selected_profile.data.accessories.magical_power.total;
+            const MagicPower = user_data.accessories.magical_power.total;
             // Slayers data
-            const Revenant = selected_profile.data.slayer.slayers.zombie.level.currentLevel;
-            const Enderman = selected_profile.data.slayer.slayers.enderman.level.currentLevel;
-            const Tarantula = selected_profile.data.slayer.slayers.spider.level.currentLevel;
-            const Sven = selected_profile.data.slayer.slayers.wolf.level.currentLevel;
-            const blaze = selected_profile.data.slayer.slayers.blaze.level.currentLevel;
+            const Revenant = slayer_data.zombie.level.currentLevel;
+            const Enderman = slayer_data.enderman.level.currentLevel;
+            const Tarantula = slayer_data.spider.level.currentLevel;
+            const Sven = slayer_data.wolf.level.currentLevel;
+            const blaze = slayer_data.blaze.level.currentLevel;
 
             embed.addFields({ name: 'Catacombs Level', value: level.toString(), inline: false },)
             embed.addFields({ name: 'Total secrets Found', value: secrets.toString(), inline: false },)
@@ -102,7 +116,11 @@ client.on('messageCreate', async message => {
             embed.addFields({ name: 'Sven', value: Sven.toString(), inline: false });
             embed.addFields({ name: 'Blaze', value: blaze.toString(), inline: false });
 
-            message.channel.send({ embeds: [embed] });
+            message.channel.send({ embeds: [embed], components: [row] });
+
+
+            //handle button listener
+
 
 
 
@@ -113,6 +131,20 @@ client.on('messageCreate', async message => {
     }
 
 });
+
+
+// Handle button interactions
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isButton()) return;
+
+    if (interaction.customId === 'prova') {
+        // Handle the button logic here
+        await interaction.reply({ content: 'Prova' });
+        await interaction.message.delete(); // Deletes the message with the button
+    }
+});
+
+
 
 // Log in to Discord with your bot token
 client.login(token);
