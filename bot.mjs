@@ -3,11 +3,18 @@
 import { Client, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import fetch from 'node-fetch';
 
+import dotenv from 'dotenv';
+
+dotenv.config({ path: './token.env' });
+
+
+
+
 // Initialize the Discord client
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 // Your bot token
-const token = 'token';
+const token = process.env.TOKEN;
 
 // Command prefix
 const prefix = '!dungeons';
@@ -91,7 +98,7 @@ client.on('messageCreate', async message => {
                 .setTimestamp();
 
             const user_data = selected_profile.data
-            const slayer_data = selected_profile.data.slayer.slayers
+            const slayer_data = user_data.slayer.slayers
             // Fetch info from the JSON data
             // Dungeons data
             const secrets = user_data.dungeons.secrets_found;
@@ -99,22 +106,74 @@ client.on('messageCreate', async message => {
             const selectedClass = user_data.dungeons.classes.selected_class;
             // Accessories data
             const MagicPower = user_data.accessories.magical_power.total;
-            // Slayers data
-            const Revenant = slayer_data.zombie.level.currentLevel;
-            const Enderman = slayer_data.enderman.level.currentLevel;
-            const Tarantula = slayer_data.spider.level.currentLevel;
-            const Sven = slayer_data.wolf.level.currentLevel;
-            const blaze = slayer_data.blaze.level.currentLevel;
+            const class_average = user_data.dungeons.classes.average_level;
+            // Declare variables outside the try block so they are accessible later
+            let floor7completitions = 0, floor7pb = 0;
+            let master3completitions = 0, master3pb = 0;
+            let master4completitions = 0, master4pb = 0;
+            let master5completitions = 0, master5pb = 0;
+            let master6completitions = 0, master6pb = 0;
+            let master7completitions = 0, master7pb = 0;
+
+            // Fetch dungeon data and handle errors for each block
+            try {
+                floor7completitions = user_data.dungeons.catacombs.floors[7].stats.tier_completions;
+                floor7pb = user_data.dungeons.catacombs.floors[7].stats.fastest_time_s_plus;
+            } catch (error) {
+
+            }
+
+            try {
+                master3completitions = user_data.dungeons.master_catacombs.floors[3].stats.tier_completions;
+                master3pb = user_data.dungeons.master_catacombs.floors[3].stats.fastest_time_s_plus;
+            } catch (error) {
+
+            }
+
+            try {
+                master4completitions = user_data.dungeons.master_catacombs.floors[4].stats.tier_completions;
+                master4pb = user_data.dungeons.master_catacombs.floors[4].stats.fastest_time_s_plus;
+            } catch (error) {
+
+            }
+
+            try {
+                master5completitions = user_data.dungeons.master_catacombs.floors[5].stats.tier_completions;
+                master5pb = user_data.dungeons.master_catacombs.floors[5].stats.fastest_time_s_plus;
+            } catch (error) {
+
+            }
+
+            try {
+                master6completitions = user_data.dungeons.master_catacombs.floors[6].stats.tier_completions;
+                master6pb = user_data.dungeons.master_catacombs.floors[6].stats.fastest_time_s_plus;
+            } catch (error) {
+
+            }
+
+            try {
+                master7completitions = user_data.dungeons.master_catacombs.floors[7].stats.tier_completions;
+                master7pb = user_data.dungeons.master_catacombs.floors[7].stats.fastest_time_s_plus;
+            } catch (error) {
+
+
+            }
+
+
 
             embed.addFields({ name: 'Catacombs Level', value: level.toString(), inline: false },)
             embed.addFields({ name: 'Total secrets Found', value: secrets.toString(), inline: false },)
             embed.addFields({ name: 'Class', value: selectedClass.toString(), inline: false });
             embed.addFields({ name: 'Magic Power', value: MagicPower.toString(), inline: false });
-            embed.addFields({ name: 'Revenant', value: Revenant.toString(), inline: false });
-            embed.addFields({ name: 'Enderman', value: Enderman.toString(), inline: false });
-            embed.addFields({ name: 'Tarantula', value: Tarantula.toString(), inline: false });
-            embed.addFields({ name: 'Sven', value: Sven.toString(), inline: false });
-            embed.addFields({ name: 'Blaze', value: blaze.toString(), inline: false });
+            embed.addFields({ name: 'Class Average', value: class_average.toString(), inline: false });
+            embed.addFields({ name: 'F7 stats', value: `Completions: ${floor7completitions.toString()}, PB: ${floor7pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M3 stats', value: `Completions: ${master3completitions.toString()} || PB: ${master3pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M4 stats', value: `Completions: ${master4completitions.toString()} || PB: ${master4pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M5 stats', value: `Completions: ${master5completitions.toString()} || PB: ${master5pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M6 stats', value: `Completions: ${master6completitions.toString()} || PB: ${master6pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M7 stats', value: `Completions: ${master7completitions.toString()} || PB: ${master7pb.toString()}`, inline: false });
+
+
 
             message.channel.send({ embeds: [embed], components: [row] });
 
