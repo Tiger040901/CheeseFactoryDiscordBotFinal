@@ -107,6 +107,10 @@ client.on('messageCreate', async message => {
             // Accessories data
             const MagicPower = user_data.accessories.magical_power.total;
             const class_average = user_data.dungeons.classes.average_level;
+
+            const completitions = user_data.dungeons.catacombs.completitions;
+
+
             // Declare variables outside the try block so they are accessible later
             let floor7completitions = 0, floor7pb = 0;
             let master3completitions = 0, master3pb = 0;
@@ -172,6 +176,7 @@ client.on('messageCreate', async message => {
             embed.addFields({ name: 'M5 stats', value: `Completions: ${master5completitions.toString()} || PB: ${master5pb.toString()}`, inline: false });
             embed.addFields({ name: 'M6 stats', value: `Completions: ${master6completitions.toString()} || PB: ${master6pb.toString()}`, inline: false });
             embed.addFields({ name: 'M7 stats', value: `Completions: ${master7completitions.toString()} || PB: ${master7pb.toString()}`, inline: false });
+            embed.addFields({ name: 'Completions', value: completitions.toString(), inline: false });
 
 
 
