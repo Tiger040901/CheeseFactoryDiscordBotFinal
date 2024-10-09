@@ -108,7 +108,7 @@ client.on('messageCreate', async message => {
             const MagicPower = user_data.accessories.magical_power.total;
             const class_average = user_data.dungeons.classes.average_level;
 
-            const completitions = user_data.dungeons.catacombs.completitions;
+            const completitions = user_data.dungeons.catacombs.completions;
 
 
             // Declare variables outside the try block so they are accessible later
