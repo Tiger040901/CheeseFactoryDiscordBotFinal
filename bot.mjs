@@ -11,7 +11,6 @@ import {
     getClassAverage,
     getCompletions,
     getMagicalPower,
-    getSelected,
     getSelectedClass,
     getFloor7Completions,
     getFloor7PB,
@@ -24,7 +23,8 @@ import {
     getMaster6Completions,
     getMaster6PB,
     getMaster7Completions,
-    getMaster7PB
+    getMaster7PB,
+    checkIfAOTV
 } from './dungeon_functions.mjs';
 
 
@@ -132,18 +132,20 @@ client.on('messageCreate', async message => {
             const completions = getCompletions(selected_profile);
 
 
-            const floor7completitions = getFloor7completitions(selected_profile);
+            const floor7completions = getFloor7Completions(selected_profile);
             const floor7pb = getFloor7PB(selected_profile);
-            const master3completitions = getMaster3Completions(selected_profile);
+            const master3completions = getMaster3Completions(selected_profile);
             const master3pb = getMaster3PB(selected_profile);
-            const master4completitions = getMaster4Completions(selected_profile);
+            const master4completions = getMaster4Completions(selected_profile);
             const master4pb = getMaster4PB(selected_profile);
-            const master5completitions = getMaster5Completions(selected_profile);
+            const master5completions = getMaster5Completions(selected_profile);
             const master5pb = getMaster5PB(selected_profile);
-            const master6completitions = getMaster6Completions(selected_profile);
+            const master6completions = getMaster6Completions(selected_profile);
             const master6pb = getMaster6PB(selected_profile);
-            const master7completitions = getMaster7Completions(selected_profile);
+            const master7completions = getMaster7Completions(selected_profile);
             const master7pb = getMaster7PB(selected_profile);
+
+            const aotv = checkIfAOTV(selected_profile);
 
 
 
@@ -153,13 +155,14 @@ client.on('messageCreate', async message => {
             embed.addFields({ name: 'Class', value: selectedClass.toString(), inline: false });
             embed.addFields({ name: 'Magic Power', value: MagicPower.toString(), inline: false });
             embed.addFields({ name: 'Class Average', value: class_average.toString(), inline: false });
-            embed.addFields({ name: 'F7 stats', value: `Completions: ${floor7completitions.toString()}, PB: ${floor7pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M3 stats', value: `Completions: ${master3completitions.toString()} || PB: ${master3pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M4 stats', value: `Completions: ${master4completitions.toString()} || PB: ${master4pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M5 stats', value: `Completions: ${master5completitions.toString()} || PB: ${master5pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M6 stats', value: `Completions: ${master6completitions.toString()} || PB: ${master6pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M7 stats', value: `Completions: ${master7completitions.toString()} || PB: ${master7pb.toString()}`, inline: false });
-            embed.addFields({ name: 'Completions', value: completitions.toString(), inline: false });
+            embed.addFields({ name: 'F7 stats', value: `Completions: ${floor7completions.toString()}, PB: ${floor7pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M3 stats', value: `Completions: ${master3completions.toString()} || PB: ${master3pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M4 stats', value: `Completions: ${master4completions.toString()} || PB: ${master4pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M5 stats', value: `Completions: ${master5completions.toString()} || PB: ${master5pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M6 stats', value: `Completions: ${master6completions.toString()} || PB: ${master6pb.toString()}`, inline: false });
+            embed.addFields({ name: 'M7 stats', value: `Completions: ${master7completions.toString()} || PB: ${master7pb.toString()}`, inline: false });
+            embed.addFields({ name: 'Completions', value: completions.toString(), inline: false });
+            embed.addFields({ name: 'AOTV', value: aotv ? 'Yes' : 'No', inline: false });
 
 
 

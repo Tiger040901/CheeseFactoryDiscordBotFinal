@@ -138,3 +138,36 @@ export function getMaster7PB(selected_profile) {
     }
 }
 
+export function checkIfAOTV(selected_profile) {
+    try {
+        // Check if inventory exists and is an array
+        if (!selected_profile?.data?.items?.inventory || !Array.isArray(selected_profile.data.items.inventory)) {
+            console.error('Inventory not found or is not an array');
+            return false;
+        }
+
+        // Loop through the actual inventory length
+        for (let i = 0; i < selected_profile.data.items.inventory.length; i++) {
+            let item = selected_profile.data.items.inventory[i];
+
+            // Check if the item exists and has display_name
+            if (item && item.display_name) {
+                console.log(item.display_name);
+
+                // Check if the display_name contains 'Void'
+                if (item.display_name.includes('Void')) {
+                    return true;
+                }
+            } else {
+                continue;
+            }
+        }
+    } catch (error) {
+        console.error('Error occurred:', error);
+        return false;
+    }
+
+    // If no matching item found, return false
+    return false;
+}
+
