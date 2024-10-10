@@ -5,6 +5,29 @@ import fetch from 'node-fetch';
 
 import dotenv from 'dotenv';
 
+import {
+    getCataLevel,
+    getSecrets,
+    getClassAverage,
+    getCompletions,
+    getMagicalPower,
+    getSelected,
+    getSelectedClass,
+    getFloor7Completions,
+    getFloor7PB,
+    getMaster3Completions,
+    getMaster3PB,
+    getMaster4Completions,
+    getMaster4PB,
+    getMaster5Completions,
+    getMaster5PB,
+    getMaster6Completions,
+    getMaster6PB,
+    getMaster7Completions,
+    getMaster7PB
+} from './dungeon_functions.mjs';
+
+
 dotenv.config({ path: './token.env' });
 
 
@@ -97,71 +120,31 @@ client.on('messageCreate', async message => {
 
                 .setTimestamp();
 
-            const user_data = selected_profile.data
-            const slayer_data = user_data.slayer.slayers
+
             // Fetch info from the JSON data
             // Dungeons data
-            const secrets = user_data.dungeons.secrets_found;
-            const level = user_data.dungeons.catacombs.level.level;
-            const selectedClass = user_data.dungeons.classes.selected_class;
+            const secrets = getSecrets(selected_profile);
+            const level = getCataLevel(selected_profile);
+            const selectedClass = getSelectedClass(selected_profile);
             // Accessories data
-            const MagicPower = user_data.accessories.magical_power.total;
-            const class_average = user_data.dungeons.classes.average_level;
-
-            const completitions = user_data.dungeons.catacombs.completions;
-
-
-            // Declare variables outside the try block so they are accessible later
-            let floor7completitions = 0, floor7pb = 0;
-            let master3completitions = 0, master3pb = 0;
-            let master4completitions = 0, master4pb = 0;
-            let master5completitions = 0, master5pb = 0;
-            let master6completitions = 0, master6pb = 0;
-            let master7completitions = 0, master7pb = 0;
-
-            // Fetch dungeon data and handle errors for each block
-            try {
-                floor7completitions = user_data.dungeons.catacombs.floors[7].stats.tier_completions;
-                floor7pb = user_data.dungeons.catacombs.floors[7].stats.fastest_time_s_plus;
-            } catch (error) {
-
-            }
-
-            try {
-                master3completitions = user_data.dungeons.master_catacombs.floors[3].stats.tier_completions;
-                master3pb = user_data.dungeons.master_catacombs.floors[3].stats.fastest_time_s_plus;
-            } catch (error) {
-
-            }
-
-            try {
-                master4completitions = user_data.dungeons.master_catacombs.floors[4].stats.tier_completions;
-                master4pb = user_data.dungeons.master_catacombs.floors[4].stats.fastest_time_s_plus;
-            } catch (error) {
-
-            }
-
-            try {
-                master5completitions = user_data.dungeons.master_catacombs.floors[5].stats.tier_completions;
-                master5pb = user_data.dungeons.master_catacombs.floors[5].stats.fastest_time_s_plus;
-            } catch (error) {
-
-            }
-
-            try {
-                master6completitions = user_data.dungeons.master_catacombs.floors[6].stats.tier_completions;
-                master6pb = user_data.dungeons.master_catacombs.floors[6].stats.fastest_time_s_plus;
-            } catch (error) {
-
-            }
-
-            try {
-                master7completitions = user_data.dungeons.master_catacombs.floors[7].stats.tier_completions;
-                master7pb = user_data.dungeons.master_catacombs.floors[7].stats.fastest_time_s_plus;
-            } catch (error) {
+            const MagicPower = getMagicalPower(selected_profile);
+            const class_average = getClassAverage(selected_profile);
+            const completions = getCompletions(selected_profile);
 
 
-            }
+            const floor7completitions = getFloor7completitions(selected_profile);
+            const floor7pb = getFloor7PB(selected_profile);
+            const master3completitions = getMaster3Completions(selected_profile);
+            const master3pb = getMaster3PB(selected_profile);
+            const master4completitions = getMaster4Completions(selected_profile);
+            const master4pb = getMaster4PB(selected_profile);
+            const master5completitions = getMaster5Completions(selected_profile);
+            const master5pb = getMaster5PB(selected_profile);
+            const master6completitions = getMaster6Completions(selected_profile);
+            const master6pb = getMaster6PB(selected_profile);
+            const master7completitions = getMaster7Completions(selected_profile);
+            const master7pb = getMaster7PB(selected_profile);
+
 
 
 
