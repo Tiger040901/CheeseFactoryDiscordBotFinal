@@ -24,12 +24,36 @@ import {
     getMaster6PB,
     getMaster7Completions,
     getMaster7PB,
-    checkIfAOTV
+    getItems,
+    decimalToMinutes
 } from './dungeon_functions.mjs';
 
 
 dotenv.config({ path: './token.env' });
 
+// Fetch info from the JSON data
+
+let secrets = null
+let level = null
+let selectedClass = null
+let MagicPower = null
+let class_average = null
+let completions = null
+let floor7completions = null
+let floor7pb = null
+let master3completions = null
+let master3pb = null
+let master4completions = null
+let master4pb = null
+let master5completions = null
+let master5pb = null
+let master6completions = null
+let master6pb = null
+let master7completions = null
+let master7pb = null
+let HypeText = "<:hyperionpng:1285284808033046529> <:no:1285292201865117870>"
+let TermText = "<:terminatorpng:1285289299536904213> <:no:1285292201865117870>"
+let items = []
 
 
 
@@ -102,14 +126,42 @@ client.on('messageCreate', async message => {
 
 
 
-            const provaButton = new ButtonBuilder()
-                .setCustomId('prova')
-                .setLabel('Prova')
+            const F7Button = new ButtonBuilder()
+                .setCustomId('f7')
+                .setLabel('Floor 7')
+                .setStyle(ButtonStyle.Primary);
+
+            const M3Button = new ButtonBuilder()
+                .setCustomId('m3')
+                .setLabel('Master 3')
+                .setStyle(ButtonStyle.Primary);
+
+            const M4Button = new ButtonBuilder()
+                .setCustomId('m4')
+                .setLabel('Master 4')
+                .setStyle(ButtonStyle.Primary);
+
+            const M5Button = new ButtonBuilder()
+                .setCustomId('m5')
+                .setLabel('Master 5')
+                .setStyle(ButtonStyle.Primary);
+
+            const M6Button = new ButtonBuilder()
+                .setCustomId('m6')
+                .setLabel('Master 6')
+                .setStyle(ButtonStyle.Primary);
+
+            const M7Button = new ButtonBuilder()
+                .setCustomId('m7')
+                .setLabel('Master 7')
                 .setStyle(ButtonStyle.Primary);
 
 
-            const row = new ActionRowBuilder()
-                .addComponents(provaButton);
+            const row1 = new ActionRowBuilder()
+                .addComponents(F7Button, M3Button, M4Button, M5Button, M6Button);
+
+            const row2 = new ActionRowBuilder()
+                .addComponents(M7Button);
 
 
 
@@ -123,50 +175,73 @@ client.on('messageCreate', async message => {
 
             // Fetch info from the JSON data
             // Dungeons data
-            const secrets = getSecrets(selected_profile);
-            const level = getCataLevel(selected_profile);
-            const selectedClass = getSelectedClass(selected_profile);
-            // Accessories data
-            const MagicPower = getMagicalPower(selected_profile);
-            const class_average = getClassAverage(selected_profile);
-            const completions = getCompletions(selected_profile);
+            secrets = getSecrets(selected_profile);
+            level = getCataLevel(selected_profile);
+            selectedClass = getSelectedClass(selected_profile);
+
+            MagicPower = getMagicalPower(selected_profile);
+            class_average = getClassAverage(selected_profile);
+            completions = getCompletions(selected_profile);
 
 
-            const floor7completions = getFloor7Completions(selected_profile);
-            const floor7pb = getFloor7PB(selected_profile);
-            const master3completions = getMaster3Completions(selected_profile);
-            const master3pb = getMaster3PB(selected_profile);
-            const master4completions = getMaster4Completions(selected_profile);
-            const master4pb = getMaster4PB(selected_profile);
-            const master5completions = getMaster5Completions(selected_profile);
-            const master5pb = getMaster5PB(selected_profile);
-            const master6completions = getMaster6Completions(selected_profile);
-            const master6pb = getMaster6PB(selected_profile);
-            const master7completions = getMaster7Completions(selected_profile);
-            const master7pb = getMaster7PB(selected_profile);
-
-            const aotv = checkIfAOTV(selected_profile);
-
-
-
-
-            embed.addFields({ name: 'Catacombs Level', value: level.toString(), inline: false },)
-            embed.addFields({ name: 'Total secrets Found', value: secrets.toString(), inline: false },)
-            embed.addFields({ name: 'Class', value: selectedClass.toString(), inline: false });
-            embed.addFields({ name: 'Magic Power', value: MagicPower.toString(), inline: false });
-            embed.addFields({ name: 'Class Average', value: class_average.toString(), inline: false });
-            embed.addFields({ name: 'F7 stats', value: `Completions: ${floor7completions.toString()}, PB: ${floor7pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M3 stats', value: `Completions: ${master3completions.toString()} || PB: ${master3pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M4 stats', value: `Completions: ${master4completions.toString()} || PB: ${master4pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M5 stats', value: `Completions: ${master5completions.toString()} || PB: ${master5pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M6 stats', value: `Completions: ${master6completions.toString()} || PB: ${master6pb.toString()}`, inline: false });
-            embed.addFields({ name: 'M7 stats', value: `Completions: ${master7completions.toString()} || PB: ${master7pb.toString()}`, inline: false });
-            embed.addFields({ name: 'Completions', value: completions.toString(), inline: false });
-            embed.addFields({ name: 'AOTV', value: aotv ? 'Yes' : 'No', inline: false });
+            floor7completions = getFloor7Completions(selected_profile);
+            floor7pb = decimalToMinutes(getFloor7PB(selected_profile));
+            master3completions = getMaster3Completions(selected_profile);
+            master3pb = decimalToMinutes(getMaster3PB(selected_profile));
+            master4completions = getMaster4Completions(selected_profile);
+            master4pb = decimalToMinutes(getMaster4PB(selected_profile));
+            master5completions = getMaster5Completions(selected_profile);
+            master5pb = decimalToMinutes(getMaster5PB(selected_profile));
+            master6completions = getMaster6Completions(selected_profile);
+            master6pb = decimalToMinutes(getMaster6PB(selected_profile));
+            master7completions = getMaster7Completions(selected_profile);
+            master7pb = decimalToMinutes(getMaster7PB(selected_profile));
+            HypeText = ""
+            TermText = ""
+            items = getItems(selected_profile);
 
 
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].includes("Astraea")) {
+                    HypeText = "<:hyperionpng:1285284808033046529> <:checkmark1:1290354117771919360>"
 
-            message.channel.send({ embeds: [embed], components: [row] });
+                }
+
+                if (items[i].includes("Terminator")) {
+                    TermText = "<:terminatorpng:1285289299536904213> <:checkmark1:1290354117771919360>"
+                }
+
+            }
+
+            // check if "hyperion" is in items
+
+
+
+
+
+
+
+
+
+
+            embed.addFields({ name: 'Catacombs Levels and Stats', value: `Catacomb Level: ${level.toString()} \nClass Average: ${class_average.toString()} \nSelected Class: ${selectedClass.toString()} \nMagical Power: ${MagicPower.toString()}`, inline: false },)
+            embed.addFields({ name: 'Total secrets Found', value: `Secrets: ${secrets.toString()}`, inline: false },)
+            embed.addFields({
+                name: 'Completitions and PB',
+                value: `COMPLETITIONS // PB 
+            F7: ${floor7completions ?? 0} // ${floor7pb ?? 0} 
+            M3: ${master3completions ?? 0} // ${master3pb ?? 0} 
+            M4: ${master4completions ?? 0} // ${master4pb ?? 0} 
+            M5: ${master5completions ?? 0} // ${master5pb ?? 0} 
+            M6: ${master6completions ?? 0} // ${master6pb ?? 0} 
+            M7: ${master7completions ?? 0} // ${master7pb ?? 0}`,
+                inline: false
+            });
+            embed.addFields({ name: 'Relevant Items', value: `${HypeText} \n${TermText}`, inline: false });
+
+
+
+            message.channel.send({ embeds: [embed], components: [row1, row2] });
 
 
             //handle button listener
@@ -187,8 +262,16 @@ client.on('messageCreate', async message => {
 client.on('interactionCreate', async interaction => {
     if (!interaction.isButton()) return;
 
-    if (interaction.customId === 'prova') {
+    if (interaction.customId === 'f7') {
         // Handle the button logic here
+        const embed = new EmbedBuilder()
+            .setTitle(`Dungeons Information for ${username}`)
+            .setColor(0x00AE86)
+
+            .setTimestamp();
+
+
+
         await interaction.reply({ content: 'Prova' });
         await interaction.message.delete(); // Deletes the message with the button
     }

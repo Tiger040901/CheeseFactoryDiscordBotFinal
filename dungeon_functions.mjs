@@ -138,7 +138,8 @@ export function getMaster7PB(selected_profile) {
     }
 }
 
-export function checkIfAOTV(selected_profile) {
+export function getItems(selected_profile) {
+    let list = []
     try {
         // Check if inventory exists and is an array
         if (!selected_profile?.data?.items?.inventory || !Array.isArray(selected_profile.data.items.inventory)) {
@@ -152,16 +153,28 @@ export function checkIfAOTV(selected_profile) {
 
             // Check if the item exists and has display_name
             if (item && item.display_name) {
-                console.log(item.display_name);
+                list.push(item.display_name);
 
-                // Check if the display_name contains 'Void'
-                if (item.display_name.includes('Void')) {
-                    return true;
-                }
+
             } else {
                 continue;
             }
         }
+
+        for (let i = 0; i < selected_profile.data.items.enderchest.length; i++) {
+            let item = selected_profile.data.items.enderchest[i];
+
+            // Check if the item exists and has display_name only if it's not already in the list
+            if (item && item.display_name && !list.includes(item.display_name)) {
+                list.push(item.display_name);
+
+
+            } else {
+                continue;
+            }
+        }
+
+        return list
     } catch (error) {
         console.error('Error occurred:', error);
         return false;
@@ -171,3 +184,19 @@ export function checkIfAOTV(selected_profile) {
     return false;
 }
 
+
+
+
+export function decimalToMinutes(milliseconds) {
+    if (milliseconds === undefined) {
+        return "0:00";  // Handle 0 input explicitly
+    }
+
+    const timeInSeconds = Math.floor(milliseconds / 1000);  // Convert to seconds
+    const minutes = Math.floor(timeInSeconds / 60);         // Calculate full minutes
+    const seconds = timeInSeconds % 60;                     // Calculate remaining seconds
+
+    const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+    return `${minutes}:${formattedSeconds}`;
+}
